@@ -1,0 +1,22 @@
+#!/bin/sh
+# Blocks a commit whose message would publish personal data. Activated per clone with:
+#   git config core.hooksPath dev/hooks
+PY=""
+for candidate in python3 python "py -3"; do
+  if $candidate -c "import sys; sys.exit(sys.version_info < (3, 10))" >/dev/null 2>&1; then
+    PY=$candidate
+    break
+  fi
+done
+if [ -z "$PY" ]; then
+  echo "Commit blocked: no Python 3.10+ found, so the personal-data check could not run."
+  exit 1
+fi
+$PY dev/check_private_data.py --message "$1"
+status=$?
+if [ $status -eq 1 ]; then
+  echo "Commit blocked: reword the commit message above, then commit again."
+elif [ $status -ne 0 ]; then
+  echo "Commit blocked: the personal-data check could not run (see above)."
+fi
+exit $status

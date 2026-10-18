@@ -1,0 +1,11 @@
+{
+  "name": "honest-tailor",
+  "version": "0.1.0",
+  "description": "Tailor a CV to a job posting without inventing anything: an evidence-and-gaps read-out before writing, region-correct CVs rendered to PDF, a checker that traces every number, name, title and date back to your own facts, and an archive of every application.",
+  "author": {
+    "name": "billkhiz-bit",
+    "url": "https://github.com/billkhiz-bit"
+  },
+  "license": "MIT",
+  "keywords": ["cv", "resume", "job-applications", "tailoring", "fact-checking"]
+}

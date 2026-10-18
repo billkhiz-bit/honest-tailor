@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "honest-tailor",
+  "description": "Tailor a CV to a job posting without inventing anything, with every claim traced back to your own facts.",
+  "owner": {
+    "name": "billkhiz-bit"
+  },
+  "plugins": [
+    {
+      "name": "honest-tailor",
+      "description": "Tailor a CV to a job posting without inventing anything: an evidence-and-gaps read-out before writing, region-correct CVs rendered to PDF, a checker that traces every number, name, title and date back to your own facts, and an archive of every application.",
+      "author": {
+        "name": "billkhiz-bit"
+      },
+      "category": "productivity",
+      "source": "./",
+      "homepage": "https://github.com/billkhiz-bit/honest-tailor"
+    }
+  ]
+}

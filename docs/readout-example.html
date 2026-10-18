@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<title>honest-tailor read-out example</title>
+<!-- Source of docs/readout-example.png. Text is an excerpt of a real test run on the fictional persona
+     (benchmark/persona) and examples/postings/wide-world-data-engineer-dubai.md. -->
+<style>
+  body { margin: 0; background: #1e1e1e; color: #d4d4d4; font: 14px/1.5 "Cascadia Mono", Consolas, Menlo, monospace; }
+  .frame { width: 900px; padding: 22px 28px; }
+  .prompt { color: #9cdcfe; margin-bottom: 14px; }
+  .prompt b { color: #ce9178; font-weight: normal; }
+  h2 { color: #fff; font-size: 15px; margin: 16px 0 6px; }
+  p { margin: 6px 0; }
+  table { border-collapse: collapse; margin: 6px 0; }
+  td, th { border: 1px solid #444; padding: 3px 8px; text-align: left; vertical-align: top; }
+  th { color: #fff; }
+  .gap { color: #f48771; font-weight: bold; }
+  .ok { color: #89d185; }
+  .no { color: #f48771; font-weight: bold; }
+  .unk { color: #dcdcaa; font-weight: bold; }
+  .verdict { color: #fff; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="prompt">&gt; Tailor my CV to the job in <b>posting.md</b></div>
+  <p>Nothing written yet. <span class="verdict">You'd fail at least three of the four required screening questions,
+  so I'd advise against this one.</span></p>
+
+  <h2>Senior Data Engineer, Wide World Importers (fictional) &middot; Dubai, on site</h2>
+  <p><b>Region profile:</b> Gulf (employer and role in the UAE): 2-3 pages, +44 phone format, a personal-details line.</p>
+
+  <h2>Must-haves and your evidence</h2>
+  <table>
+    <tr><th>Keyword</th><th>Evidence</th></tr>
+    <tr><td>Apache Spark (3+ yrs, required)</td><td class="gap">Gap: none in your sources</td></tr>
+    <tr><td>Databricks / Delta Lake (required)</td><td class="gap">Gap</td></tr>
+    <tr><td>Master's in CS or related (required)</td><td class="gap">Gap: BSc (Hons) Economics, 2:2</td></tr>
+    <tr><td>Data platform</td><td class="ok">Contoso: "Leads a team of 3 building the company's data platform on AWS"</td></tr>
+    <tr><td>Logistics data (advantage)</td><td class="ok">Contoso Logistics; RouteWise (18 vans); warehouse migration (30,000 SKUs)</td></tr>
+  </table>
+
+  <h2>Screening questions (all required)</h2>
+  <p>1. Live in the UAE with a valid residence visa? <span class="no">No</span>: you're in London.</p>
+  <p>2. Master's in CS or related? <span class="no">No.</span></p>
+  <p>3. 3+ years hands-on Spark? <span class="no">No.</span></p>
+  <p>4. Start within 30 days? <span class="unk">Unknown</span>: your notice period isn't in your sources.</p>
+
+  <h2>Recommendation</h2>
+  <p><span class="verdict">Don't apply.</span> With three required answers honestly "No", an automated form like
+  this will almost certainly reject it before anyone reads the CV. Your logistics background is a real match, but it
+  can't make up for missing Spark, Databricks and Delta Lake, the residence requirement and the degree.</p>
+  <p>Skip it, apply anyway, or change the angle: tell me "go" and which.</p>
+</div>
+</body>
+</html>

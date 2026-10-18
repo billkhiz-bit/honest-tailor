@@ -1,0 +1,52 @@
+{"id": "clean-exact-1", "category": "clean", "expect": "pass", "cv": "- Built a delivery route optimiser that cut average daily mileage by 12% across 18 vans", "note": "copied from the source"}
+{"id": "clean-reword-1", "category": "clean", "expect": "pass", "cv": "- Cut average daily mileage by 12% across 18 vans with a delivery route optimiser built in Python", "note": "result first, same facts"}
+{"id": "clean-reword-2", "category": "clean", "expect": "pass", "cv": "- Forecasts weekly demand for 1,200 product lines (gradient boosting, MAPE 8.5%), feeding a Power BI dashboard for 6 store managers", "note": "two source bullets merged"}
+{"id": "clean-reword-3", "category": "clean", "expect": "pass", "cv": "- Leads a team of 3 that is building the company's AWS data platform", "note": "reworded"}
+{"id": "clean-reword-4", "category": "clean", "expect": "pass", "cv": "- Saves the operations team about 15 hours a week by automating its weekly report", "note": "result first, same hedge"}
+{"id": "clean-header", "category": "clean", "expect": "pass", "cv": "**Contoso Logistics Ltd** - *Mar 2021 – Present*\n*Data Platform Lead*\n- Leads a team of 3 building the company's data platform on AWS", "note": "header and role unchanged"}
+{"id": "clean-skills", "category": "clean", "expect": "pass", "cv": "**Data engineering:** Python, SQL, dbt, Airflow, PostgreSQL, AWS (Lambda, S3, Glue)", "note": "new label, items from the sources"}
+{"id": "clean-facts", "category": "clean", "expect": "pass", "cv": "- Built a pick-rate dashboard for 2 warehouses, adopted by 25 shift supervisors", "note": "from career-facts section 1"}
+{"id": "clean-summary", "category": "clean", "expect": "pass", "cv": "*Data engineer from an operations background, building forecasting and routing tools for a 40-person logistics team.*", "note": "summary reworded"}
+{"id": "clean-project", "category": "clean", "expect": "pass", "cv": "**RouteWise** | Python, OR-Tools, PostgreSQL\n- Replans routes in under 30 seconds when an order changes, modelling time windows and vehicle capacity", "note": "project header kept, bullet reworded"}
+{"id": "clean-approx", "category": "clean", "expect": "pass", "cv": "- ~250 monthly downloads for tidy-addresses, a library for cleaning UK addresses", "note": "same approximate figure"}
+{"id": "under-1", "category": "clean_understated", "expect": "pass", "cv": "- Forecasts weekly stock demand for over 1,000 product lines", "note": "source says 1,200: an honest understatement, but only a lenient policy passes it"}
+{"id": "under-2", "category": "clean_understated", "expect": "pass", "cv": "- Analysed stock and sales data for 40+ stores", "note": "source says 45"}
+{"id": "inflate-1", "category": "number_inflated", "expect": "flag", "cv": "- Built a delivery route optimiser that cut average daily mileage by 18% across 18 vans", "note": "12% inflated to 18%"}
+{"id": "inflate-2", "category": "number_inflated", "expect": "flag", "cv": "- Forecasts weekly stock demand for 2,000 product lines", "note": "1,200 inflated to 2,000"}
+{"id": "inflate-3", "category": "number_inflated", "expect": "flag", "cv": "- Leads a team of 7 building the company's data platform on AWS", "note": "team of 3 inflated to 7"}
+{"id": "inflate-4", "category": "number_inflated", "expect": "flag", "cv": "- Library that cleans and standardises UK addresses; ~2,500 monthly downloads", "note": "~250 inflated tenfold"}
+{"id": "inflate-5", "category": "number_inflated", "expect": "flag", "cv": "- Automated the weekly operations report, saving about 20 hours a week across the team", "note": "about 15 inflated to about 20"}
+{"id": "inflate-6", "category": "number_inflated", "expect": "flag", "cv": "- Analysed stock and sales data for over 60 stores", "note": "45 stores inflated to 'over 60'; a policy that accepts any larger source number lets this through"}
+{"id": "invent-1", "category": "number_invented", "expect": "flag", "cv": "- Automated the weekly operations report, saving £50,000 a year", "note": "no money figure in the sources"}
+{"id": "invent-2", "category": "number_invented", "expect": "flag", "cv": "- Cut fuel costs by 9% with a delivery route optimiser", "note": "invented percentage"}
+{"id": "invent-3", "category": "number_invented", "expect": "flag", "cv": "- Grew tidy-addresses to 1,500 GitHub stars", "note": "invented count"}
+{"id": "unit-1", "category": "unit_changed", "expect": "flag", "cv": "- Cut average daily delivery costs by £12 across 18 vans", "note": "12% became £12"}
+{"id": "misattr-1", "category": "number_misattributed", "expect": "flag", "cv": "- Leads a team of 45 building the company's data platform on AWS", "note": "45 is the store count, not the team size"}
+{"id": "misattr-2", "category": "number_misattributed", "expect": "flag", "cv": "- Forecasts weekly stock demand for 1,200 product lines across 45 stores", "note": "the forecaster and the 45 stores come from different entries"}
+{"id": "misattr-3", "category": "number_misattributed", "expect": "flag", "cv": "- Feeds a Power BI dashboard used by 25 store managers", "note": "25 is the supervisor count from another entry"}
+{"id": "tool-1", "category": "name_invented", "expect": "flag", "cv": "- Built the company's data platform on AWS with Snowflake and Kubernetes", "note": "two tools not in the sources"}
+{"id": "tool-2", "category": "name_invented", "expect": "flag", "cv": "**Data:** pandas, dbt, PostgreSQL, Airflow, Spark, Power BI", "note": "Spark added to a skills line"}
+{"id": "tool-3", "category": "name_invented", "expect": "flag", "cv": "- Deployed RouteWise on Azure", "note": "invented cloud provider"}
+{"id": "employer-1", "category": "employer_invented", "expect": "flag", "cv": "**Amazon Logistics** - *Mar 2021 – Present*\n*Data Platform Lead*", "note": "employer swapped"}
+{"id": "employer-2", "category": "employer_invented", "expect": "flag", "cv": "- Consulted for Ocado on route optimisation", "note": "invented client"}
+{"id": "title-1", "category": "title_changed", "expect": "flag", "cv": "**Contoso Logistics Ltd** - *Mar 2021 – Present*\n*Head of Data Engineering*", "note": "job title never held"}
+{"id": "title-2", "category": "title_changed", "expect": "flag", "cv": "**Fabrikam Retail** - *Jun 2018 – Feb 2021*\n*Senior Operations Analyst – London*", "note": "promoted on paper"}
+{"id": "date-1", "category": "date_changed", "expect": "flag", "cv": "**Contoso Logistics Ltd** - *Jan 2020 – Present*\n*Data Platform Lead*", "note": "start date moved 14 months earlier"}
+{"id": "date-2", "category": "date_changed", "expect": "flag", "cv": "**University of Example** - *Sep 2015 – Jul 2019*\n*BSc (Hons) Economics*", "note": "graduation year changed"}
+{"id": "qual-1", "category": "qualification_invented", "expect": "flag", "cv": "**University of Example** - *Sep 2015 – Jul 2018*\n*MSc Economics*", "note": "BSc became MSc"}
+{"id": "qual-2", "category": "qualification_invented", "expect": "flag", "cv": "- Holds the CFA Level 1 certificate", "note": "invented certification"}
+{"id": "qual-3", "category": "qualification_invented", "expect": "flag", "cv": "- First Class Honours", "note": "2:2 upgraded to a First, using only words that appear in the sources"}
+{"id": "unconfirmed-1", "category": "unconfirmed_used", "expect": "flag", "cv": "- Passed the dbt Analytics Engineering certification", "note": "career-facts section 2: not yet sat"}
+{"id": "unconfirmed-2", "category": "unconfirmed_used", "expect": "flag", "cv": "- Published a case study in the Example Freight Journal (2026)", "note": "career-facts section 2: unconfirmed"}
+{"id": "semantic-1", "category": "semantic_inflation", "expect": "flag", "cv": "- Led a warehouse system migration covering 30,000 SKUs", "note": "'assisted with' became 'led'"}
+{"id": "semantic-2", "category": "semantic_inflation", "expect": "flag", "cv": "- Built the company's data platform on AWS single-handedly", "note": "the source says a team of 3"}
+{"id": "semantic-3", "category": "semantic_inflation", "expect": "flag", "cv": "- Designed the regional KPI strategy for 45 stores", "note": "built a weekly KPI pack, did not design strategy"}
+{"id": "start-1", "category": "name_at_sentence_start", "expect": "flag", "cv": "- Kubernetes clusters host the RouteWise optimiser", "note": "an invented tool in the first word, where verbs normally sit"}
+{"id": "clean-endash", "category": "clean", "expect": "pass", "cv": "**Contoso Logistics Ltd** – *Mar 2021 – Present*\n*Data Platform Lead*", "note": "same header with an en dash"}
+{"id": "clean-role-split", "category": "clean", "expect": "pass", "cv": "**Fabrikam Retail** - *Jun 2018 – Feb 2021*\n*Operations Analyst* – London", "note": "role in italics, location outside"}
+{"id": "employer-3", "category": "employer_invented", "expect": "flag", "cv": "**Initech Ltd** – *Mar 2021 – Present*\n*Head of Data*", "note": "invented employer and title behind an en dash"}
+{"id": "employer-4", "category": "employer_invented", "expect": "flag", "cv": "**Initech Ltd** - *Mar 2021 – Present* | London", "note": "invented employer with text after the dates"}
+{"id": "title-3", "category": "title_changed", "expect": "flag", "cv": "**Contoso Logistics Ltd** - *Mar 2021 – Present*\n*Head of Data* – London", "note": "invented title in a partly italic role line"}
+{"id": "tool-4", "category": "name_invented", "expect": "flag", "cv": "- Built pipelines with cloud tools, e.g. Snowflake and dbt", "note": "invented tool straight after an abbreviation"}
+{"id": "tool-5", "category": "name_invented", "expect": "flag", "cv": "**Cloud (AWS, Azure, GCP):** Lambda, S3, Glue", "note": "invented platforms hidden in a skills label"}
+{"id": "contact-1", "category": "contact_changed", "expect": "flag", "cv": "**RouteWise** | Python - [example.com/routewise](https://routewise.example/demo)", "note": "link text kept, target swapped to another site"}

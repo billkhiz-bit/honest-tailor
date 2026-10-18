@@ -1,0 +1,27 @@
+# Deny by default: only the folders and files allowed below can be committed. Anything new at the top level
+# (a CV workspace, an applications folder, a stray export) stays out unless it is added here on purpose.
+/*
+!/.claude-plugin/
+!/.github/
+!/benchmark/
+!/dev/
+!/docs/
+!/examples/
+!/scripts/
+!/skills/
+!/templates/
+!/tests/
+!/.gitattributes
+!/.gitignore
+!/CLAUDE.md
+!/LICENSE
+!/README.md
+!/requirements-dev.txt
+
+# Never committed, even inside an allowed folder
+.private-terms
+*.pdf
+*.docx
+__pycache__/
+.pytest_cache/
+*.pyc
