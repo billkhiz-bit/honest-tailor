@@ -15,6 +15,7 @@
 !/.gitattributes
 !/.gitignore
 !/LICENSE
+!/PRIVACY.md
 !/README.md
 !/requirements-dev.txt
 

@@ -7,5 +7,12 @@
     "url": "https://github.com/billkhiz-bit"
   },
   "license": "MIT",
-  "keywords": ["cv", "resume", "job-applications", "tailoring", "fact-checking"]
+  "keywords": [
+    "cv",
+    "resume",
+    "job-applications",
+    "tailoring",
+    "fact-checking"
+  ],
+  "privacyPolicyUrl": "https://github.com/billkhiz-bit/honest-tailor/blob/main/PRIVACY.md"
 }

@@ -75,7 +75,7 @@ misses rather than hiding them. Results: [`benchmark/RESULTS.md`](benchmark/RESU
 
 ## Privacy
 
-Your CV and applications stay in your workspace folder. The plugin makes no network calls of its own apart from
+[Privacy policy](PRIVACY.md). In short: your CV and applications stay in your workspace folder. The plugin makes no network calls of its own apart from
 fetching a posting link you give it. As with anything in Claude Code, the files Claude reads are sent to the model
 as part of your session.
 
