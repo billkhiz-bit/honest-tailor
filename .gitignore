@@ -1,6 +1,7 @@
 # Deny by default: only the folders and files allowed below can be committed. Anything new at the top level
 # (a CV workspace, an applications folder, a stray export) stays out unless it is added here on purpose.
 /*
+!/.claude/
 !/.claude-plugin/
 !/.github/
 !/benchmark/
@@ -13,7 +14,6 @@
 !/tests/
 !/.gitattributes
 !/.gitignore
-!/CLAUDE.md
 !/LICENSE
 !/README.md
 !/requirements-dev.txt

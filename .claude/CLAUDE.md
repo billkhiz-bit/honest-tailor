@@ -28,4 +28,6 @@ the gitignored `.private-terms`), through the pre-commit hook (`git config core.
 - `.gitignore` denies everything at the top level by default. A new top-level file or folder must be added to its
   allowlist on purpose; that is what keeps a CV workspace or export from being committed by accident.
 - `docs/readout-example.png` is a screenshot of `docs/readout-example.html` (headless Edge, 956x745). Edit the HTML,
-  never the image, so the leak check scans the text behind it.
+  never the image, so the leak check scans the text behind it. Likewise `.claude-plugin/icon.png` comes from
+  `docs/icon-source.html` (1024x1024). The directory takes a plugin's icon only the first time it is saved there.
+- These notes live in `.claude/CLAUDE.md`, not the repo root: a root CLAUDE.md is flagged by the plugin directory.
