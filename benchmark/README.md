@@ -30,7 +30,7 @@ the limits honestly, and the skill covers them by re-reading each bullet against
 | `unconfirmed_used` | flag | A fact taken from career-facts' unconfirmed section |
 | `contact_changed` | flag | An email, phone number or link target that is not in the sources |
 | `semantic_inflation` | flag | Verbs or scope upgraded ("assisted with" to "led"). Expected to be missed |
-| `name_at_sentence_start` | flag | An invented name as a bullet's first word, where verbs normally sit. Expected to be missed |
+| `name_at_sentence_start` | flag | An invented name as a bullet's first word, where verbs normally sit (a first word is skipped only when it reads as a verb) |
 
 ## The number policy
 

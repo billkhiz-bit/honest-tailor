@@ -164,15 +164,76 @@ def _sentences(text: str) -> list[str]:
     return parts
 
 
+# Verbs that open CV bullets, as base forms: every inflection is generated from them (plan: plans, planned,
+# planning), so a name that merely ends in -ed or -ing ("Spring", "Boeing") is never mistaken for a verb.
+BASE_VERBS = """
+accelerate achieve act adapt add administer advise align analyse analyze apply architect arrange assess assist audit
+author automate boost build calculate champion chair coach collaborate collect communicate compile complete conduct
+configure consolidate contribute convert coordinate create cut debug define deliver deploy design detect develop
+devise direct document double draft drive earn edit eliminate enable engineer enhance ensure establish evaluate
+examine execute expand extend extract facilitate feed find forecast gather generate grow guide halve handle help hold
+identify implement improve include increase initiate install integrate interview introduce investigate keep launch
+lead liaise maintain make manage map measure mentor merge migrate model modernise modernize monitor negotiate optimise
+optimize organise organize overhaul oversee own partner perform pilot plan prepare present process produce program
+programme prototype provide publish query raise rebuild record recruit redesign reduce refactor register release
+replace replan report research resolve restructure review revise run save scale schedule secure select sell serve
+set ship simplify solve speak spearhead specify spend standardise standardize steer streamline strengthen structure
+supervise support take teach test track train transform translate trim tune undertake unify update upgrade use
+validate verify win work write begin bring give meet seek
+acquire advocate allocate answer approve assemble attend budget consult enter file fund invest join learn lower
+market obtain operate participate pass pitch price promote qualify reconcile represent shape source study submit
+triple visit volunteer
+""".split()
+# Past tenses that the rules below cannot generate
+IRREGULAR = set("""
+built drove fed found grew held kept led made oversaw ran rebuilt sold spoke spent took taught undertook won wrote
+began brought gave met sought set cut
+""".split())
+# Openers that are not verbs but never name anything
+OPENERS = {"successfully", "independently", "jointly", "personally", "consistently", "regularly", "proactively",
+           "directly", "also", "currently", "previously", "together", "responsible", "accountable"}
+# Bare forms that also serve as job titles: "Lead data engineer" or "Partner at..." is a claim, so it is checked;
+# "Leads", "Led" and "Partnered" are still verbs
+TITLE_LIKE = {"lead", "partner", "chair", "champion", "pilot", "head", "director", "manager", "principal"}
+PREFIXES = {"co", "re", "pre", "self", "cross", "multi"}  # skipped only when a hyphen follows: "Co-developed"
+
+
+def _verb_forms(base: str) -> set[str]:
+    forms = {base, base + "s", base + "ed", base + "ing"}
+    if base.endswith("e"):
+        forms |= {base + "d", base[:-1] + "ing"}
+    if base.endswith(("s", "sh", "ch", "x", "z", "o")):
+        forms.add(base + "es")
+    if base.endswith("y") and base[-2] not in "aeiou":
+        forms |= {base[:-1] + "ies", base[:-1] + "ied"}
+    if re.fullmatch(r"[a-z]*[^aeiou][aeiou][bdgklmnprt]", base) and len(base) <= 6:
+        forms |= {base + base[-1] + "ed", base + base[-1] + "ing"}       # plan: planned, planning
+    return forms
+
+
+VERB_FORMS = (set().union(*map(_verb_forms, BASE_VERBS)) | IRREGULAR | OPENERS) - TITLE_LIKE
+
+
+def _looks_like_verb(token: str) -> bool:
+    return token.lower() in VERB_FORMS
+
+
 def name_tokens(text: str, skip_sentence_start: bool) -> list[str]:
-    """Capitalised terms worth checking. A Title-case word that opens a sentence is skipped, because bullets
-    open with verbs ("Built", "Leads"); an all-caps or mixed-case opener ("AWS", "PhD") is still checked."""
+    """Capitalised terms worth checking. A sentence's first word is skipped only when it is a known verb form or
+    opening adverb ("Built", "Leads", "Successfully"), since bullets open with verbs; any other opener
+    ("Kubernetes clusters...", "First Class Honours", "Lead engineer") is checked like the rest."""
     found = []
     for sentence in _sentences(text):
-        for i, token in enumerate(TOKEN.findall(sentence)):
+        opener = True
+        for m in TOKEN.finditer(sentence):
+            token, first, opener = m[0], opener, False
+            if first and token.lower() in PREFIXES and sentence[m.end():m.end() + 1] == "-":
+                opener = True  # "Co-developed": the word after the hyphen is the real opener
+                continue
             if not any(c.isupper() for c in token):
                 continue
-            if skip_sentence_start and i == 0 and token[0].isupper() and token[1:] == token[1:].lower():
+            if (skip_sentence_start and first and token[0].isupper() and token[1:] == token[1:].lower()
+                    and _looks_like_verb(token)):
                 continue
             found.append(token)
     return found

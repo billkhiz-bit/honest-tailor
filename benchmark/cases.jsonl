@@ -50,3 +50,9 @@
 {"id": "tool-4", "category": "name_invented", "expect": "flag", "cv": "- Built pipelines with cloud tools, e.g. Snowflake and dbt", "note": "invented tool straight after an abbreviation"}
 {"id": "tool-5", "category": "name_invented", "expect": "flag", "cv": "**Cloud (AWS, Azure, GCP):** Lambda, S3, Glue", "note": "invented platforms hidden in a skills label"}
 {"id": "contact-1", "category": "contact_changed", "expect": "flag", "cv": "**RouteWise** | Python - [example.com/routewise](https://routewise.example/demo)", "note": "link text kept, target swapped to another site"}
+{"id": "clean-opener-1", "category": "clean", "expect": "pass", "cv": "- Streamlined the weekly operations report, saving about 15 hours a week across the team", "note": "an opening verb not used anywhere in the sources"}
+{"id": "clean-opener-2", "category": "clean", "expect": "pass", "cv": "- Successfully cut average daily mileage by 12% across 18 vans with a delivery route optimiser", "note": "an opening adverb"}
+{"id": "clean-opener-3", "category": "clean", "expect": "pass", "cv": "- Undertook the analysis of stock and sales data for 45 stores", "note": "an irregular past tense"}
+{"id": "clean-opener-4", "category": "clean", "expect": "pass", "cv": "- Ensures a Power BI dashboard serves 6 store managers", "note": "a present-tense verb not in the sources"}
+{"id": "start-2", "category": "name_at_sentence_start", "expect": "flag", "cv": "- Spring Boot services power the RouteWise optimiser", "note": "an invented framework whose name ends like a verb (-ing)"}
+{"id": "start-3", "category": "name_at_sentence_start", "expect": "flag", "cv": "- Boeing freight data feeds the ShelfSense forecasts", "note": "an invented client whose name ends in -ing"}

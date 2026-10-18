@@ -151,7 +151,7 @@ def test_link_targets_must_be_in_the_sources(sources, exact_policy):
 
 
 def test_a_different_profile_on_the_same_site_is_flagged(sources, exact_policy):
-    findings = check("- Code at [my site](https://example.com/someone-else)", sources)
+    findings = check("- Built at [my site](https://example.com/someone-else)", sources)
     assert [(f.kind, f.term) for f in findings] == [("contact", "example.com/someone-else")]
 
 
@@ -200,7 +200,8 @@ def test_header_layout_variants(sources, exact_policy, cv, kinds):
 
 def test_summary_is_checked_in_any_formatting(sources, exact_policy):
     cv = "# Sam Example\n\nLondon, UK • sam@example.com\n\nPrincipal engineer with Kubernetes,\nand Snowflake.\n\n## X\n"
-    assert {f.term for f in check(cv, sources)} == {"Kubernetes", "Snowflake"}  # "Principal" opens the sentence
+    # "Principal" opens the sentence but is not a verb, so an invented seniority is caught too
+    assert {f.term for f in check(cv, sources)} == {"Principal", "Kubernetes", "Snowflake"}
 
 
 def test_abbreviations_do_not_end_a_sentence(sources, exact_policy):
@@ -239,6 +240,24 @@ def test_unreadable_source_exits_2(tmp_path):
     run = subprocess.run([sys.executable, check_cv.__file__, str(cv), "--sources", str(bad)],
                          capture_output=True, text=True, encoding="utf-8")
     assert run.returncode == 2 and "could not run" in run.stdout
+
+
+@pytest.mark.parametrize("opener", [
+    "Built", "Leads", "Led", "Spearheaded", "Applies", "Co-developed", "Grew", "Building", "Planned", "Shipped",
+    "Successfully", "Undertook", "Ensures", "Spent", "Met", "Sought", "Queries", "Overhauled", "Responsible",
+])
+def test_verbs_opening_a_bullet_are_skipped(sources, exact_policy, opener):
+    assert check(f"- {opener} the data platform on AWS", sources) == []
+
+
+@pytest.mark.parametrize("opener", [
+    "Kubernetes", "Principal", "First",
+    "Spring", "Boeing", "Ted",          # names that merely end like verbs
+    "Head", "Partner", "Chair",         # bare titles: a claim of seniority, not a verb
+    "Re",                               # a prefix without its hyphen is just a word
+])
+def test_other_openers_are_checked(sources, exact_policy, opener):
+    assert [f.term for f in check(f"- {opener} work on the data platform", sources)] == [opener]
 
 
 def test_full_cv_header_zone(sources, exact_policy):

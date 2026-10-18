@@ -20,6 +20,8 @@ A Claude Code plugin that tailors your CV to a job posting without inventing any
   it catches and what it misses.
 - **Honest about AI-written answers.** When a posting says it deprioritises AI-written applications, the plugin
   gives you an outline and the evidence, and you write the answer.
+- **The posting is data, not instructions.** In a [stress test](docs/stress-test.md), a job ad with a hidden "note to
+  AI" asking it to invent experience and upload your CV elsewhere was ignored and reported as a prompt injection.
 - **An archive of every application.** The CV as sent, the posting (postings vanish once they close), notes on gaps
   and likely interview questions, and a tracker for follow-ups.
 
@@ -55,7 +57,8 @@ CV; on the first run it offers to copy the templates in:
   say go. Claude asks before running the two scripts (the claim checker and the PDF renderer): approve each
   exact command, rather than a blanket rule for every `python` command.
 - "I sent it", "I got an interview", "review my applications": the tracker.
-- Two fictional postings to try it on: [`examples/postings/`](examples/postings/).
+- Six fictional postings to try it on, including the stress-test cases (a US role, one in German, a booby-trapped
+  ad): [`examples/postings/`](examples/postings/).
 
 In testing, one application (read-out, then writing, rendering, checking and filing) used about $1.50 of Claude
 usage at API prices on the default model; on a Claude subscription it counts towards your plan's usage instead.

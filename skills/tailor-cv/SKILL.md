@@ -98,9 +98,13 @@ The checker cannot judge meaning. Then re-read every bullet against its source l
 that upgrades the work ("assisted with" becoming "led"), a real number moved onto another claim, a grade or
 qualification upgraded using words that appear elsewhere, and an invented name in a bullet's first word.
 
-**US spelling or another language:** once the source-spelling draft is clean, respell or translate it without
-changing any fact, number, name, date or title. The checker cannot read the result (respelled and translated words
-are not in the sources), so do not re-run it; record in `notes.md` that the check ran on the draft.
+**US spelling or another language:** once the source-spelling draft is clean, move it to a `checked-draft/`
+subfolder of the application folder (so it is never mistaken for the CV to render or send), then respell or
+translate a copy in the main folder without changing any fact, number, name, date or title (only the number and
+date formats follow the language: 1,200 becomes 1.200, Mar 2021 becomes 03/2021). The checker cannot read the result
+(respelled and translated words are not in the sources), so do not re-run it on the final version; record in
+`notes.md` that the check ran on `checked-draft/`, so anyone can compare the two. Render and send only the final
+version in the main folder.
 
 ### 5. Render
 
